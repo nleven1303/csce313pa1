@@ -49,7 +49,7 @@ int main (int argc, char *argv[]) {
 	// server needs: ./server -m <val for -m arg> NULL
 	//fork
 	// In the child, run execvp using the server arguments
-
+	
 
 
     FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
