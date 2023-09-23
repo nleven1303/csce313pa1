@@ -21,9 +21,10 @@ int main (int argc, char *argv[]) {
 	int p = 1;
 	double t = 0.0;
 	int e = 1;
+	int m = MAX_MESSAGE;
 	
 	string filename = "";
-	while ((opt = getopt(argc, argv, "p:t:e:f:")) != -1) {
+	while ((opt = getopt(argc, argv, "p:t:e:f:m:")) != -1) {
 		switch (opt) {
 			case 'p':
 				p = atoi (optarg);
@@ -37,8 +38,16 @@ int main (int argc, char *argv[]) {
 			case 'f':
 				filename = optarg;
 				break;
+			case 'm':
+				m = atoi (optarg);
+				break;
 		}
 	}
+
+	// give arguments for server
+	// server needs: ./server -m <val for -m arg> NULL
+	//fork
+	// In the child, run execvp using the server arguments
 
     FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
 	
