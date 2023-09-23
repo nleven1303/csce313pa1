@@ -49,10 +49,14 @@ int main (int argc, char *argv[]) {
 	// server needs: ./server -m <val for -m arg> NULL
 	//fork
 	// In the child, run execvp using the server arguments
-	
+	pid_t serverPID = fork();
+	if (serverPID < 0)
+	{
+		cout << "Could not create child server." << endl;
+		exit(1);
+	}
 
-
-    FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
+	FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
 	
 	// example data point request
     char buf[MAX_MESSAGE]; // 256
