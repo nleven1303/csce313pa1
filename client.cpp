@@ -21,10 +21,11 @@ int main (int argc, char *argv[]) {
 	int p = 1;
 	double t = 0.0;
 	int e = 1;
+	bool a = false;
 	int m = MAX_MESSAGE;
 	
 	string filename = "";
-	while ((opt = getopt(argc, argv, "p:t:e:f:m:")) != -1) {
+	while ((opt = getopt(argc, argv, "p:t:e:f:m:a")) != -1) {
 		switch (opt) {
 			case 'p':
 				p = atoi (optarg);
@@ -49,11 +50,13 @@ int main (int argc, char *argv[]) {
 	//fork
 	// In the child, run execvp using the server arguments
 
+
+
     FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
 	
 	// example data point request
     char buf[MAX_MESSAGE]; // 256
-    datamsg x(1, 0.0, 1);
+    datamsg x(1, 0.0, 1); //change from hardcoding to user's values
 	
 	memcpy(buf, &x, sizeof(datamsg));
 	chan.cwrite(buf, sizeof(datamsg)); // question
