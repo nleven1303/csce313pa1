@@ -49,11 +49,16 @@ int main (int argc, char *argv[]) {
 	// server needs: ./server -m <val for -m arg> NULL
 	//fork
 	// In the child, run execvp using the server arguments
-	pid_t serverPID = fork();
-	if (serverPID < 0)
+	pid_t spid = fork();
+	if (spid < 0)
 	{
 		cout << "Could not create child server." << endl;
 		exit(1);
+	}
+	else if (spid == 0)
+	{
+		char *argv[] = {"./server", "-m", (char *)to_string(m).c_str(), NULL};
+		execvp(argv[0], argv);
 	}
 
 	FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
