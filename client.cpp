@@ -63,9 +63,9 @@ int main (int argc, char *argv[]) {
 
 	FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
 	
-	// example data point request
-    char buf[MAX_MESSAGE]; // 256
-    datamsg x(1, 0.0, 1); //change from hardcoding to user's values
+	// requests for the data point
+    char* buf = new char[m]; // 256
+    datamsg* x = new datamsg(p, t, e); //change from hardcoding to user's values
 	
 	memcpy(buf, &x, sizeof(datamsg));
 	chan.cwrite(buf, sizeof(datamsg)); // question
