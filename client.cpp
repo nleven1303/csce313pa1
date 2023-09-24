@@ -18,10 +18,9 @@ using namespace std;
 
 int main (int argc, char *argv[]) {
 	int opt;
-	int p = 1;
-	double t = 0.0;
-	int e = 1;
-	bool a = false;
+	int p = -1;
+	double t = -0.0;
+	int e = -1;
 	int m = MAX_MESSAGE;
 	
 	string filename = "";
