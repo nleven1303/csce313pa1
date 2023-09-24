@@ -12,15 +12,18 @@
 */
 #include "common.h"
 #include "FIFORequestChannel.h"
+#include <sys/time.h>
+#include <fstream>
 
 using namespace std;
 
 
 int main (int argc, char *argv[]) {
 	int opt;
-	int p = -1;
-	double t = -0.0;
-	int e = -1;
+	int p = 1;
+	double t = 0.0;
+	int e = 1;
+	bool a = false;
 	int m = MAX_MESSAGE;
 	
 	string filename = "";
@@ -62,7 +65,7 @@ int main (int argc, char *argv[]) {
 
 	FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
 	
-	// requests for the data point
+	// requests for the data points
     char* buf = new char[m]; // 256
     datamsg* x = new datamsg(p, t, e); //change from hardcoding to user's values
 	
